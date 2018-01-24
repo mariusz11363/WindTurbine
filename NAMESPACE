@@ -1,0 +1,2 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("graphics", "abline", "lines", "plot", "polygon", "text")

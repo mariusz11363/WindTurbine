@@ -1,0 +1,13 @@
+Package: WindTurbine
+Type: Package
+Title: Calculations for a wind turbine
+Version: 0.1.0
+Author: Mariusz Kupczyk
+Maintainer: Mariusz Kupczyk <mariusz.kupczyk@o2.pl>
+Description: The package concerns calculations related to the wind turbine. The library allows to calculate the power of the wind farm, the diameter of the propeller based on the demand for electricity and the conversion of wind speed to different heights. The package also allows you to plot a graph regarding wind directions.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: 
+    testthat
