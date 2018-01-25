@@ -59,7 +59,7 @@ generate(coor = c("N","NE","E","SE","S","SW","W","NW"),data = c(2,7,7.5,2.75,12.
 | Energy %| n      | Type of terrain                                        |
 |:--------|:-------|:-------------------------------------------------------|
 | 100     | 0.0002 | Water surface                                          |
-| 73      | 0.0024 | Open space, e.g. an airport board                      |
+| 73      | 0.0024 | Open space, e.g. an airport area                       |
 | 52      | 0.03   | Open farmland with single buildings                    |
 | 45      | 0.055  | Farmland with few buldings                             |
 | 39      | 0.1    | Farmland with few buldings and high technical barriers |
