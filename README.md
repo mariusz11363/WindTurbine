@@ -67,3 +67,54 @@ generate(coor = c("N","NE","E","SE","S","SW","W","NW"),data = c(2,7,7.5,2.75,12.
 | 24      | 0.4    | Villages or small towns, forest, or undulating terrain |
 | 18      | 0.8    | Big city with tall buildings                           |
 | 13      | 1.6    | Large cities with tall buildings and skyscrapers       |
+
+
+```{r}
+load("dane.RData")
+enableJIT(3)
+plotly_chartmaps <- function(type, colory, polcolor="white", start=-40,stop=40, by=1){
+  #a <- as.data.frame(dane[[type]][c(1,3,4,5)])
+  a <- dane[[type]][c(1,3,4,5)]
+a$hh <-  substr(a$Date, start = 12,stop = 13) %>%as.numeric()
+a <- a %>%
+  filter(hh == 0 | hh == 2 | hh == 4 | hh == 6 | hh == 8 | hh == 10 | hh == 12 | hh == 14 | hh == 16 | hh == 18 | hh == 20 | hh == 22 )%>%
+#a <- a %>%  
+#  filter(x == 14 | x == 15 | x == 16 | x == 17 | x == 18 | x == 19 | x == 20 | x == 21 | x == 22 | x == 23 | x == 24 | x == 25)
+
+#a <- a %>%
+#filter(y == 49 | y == 50 | y == 51 | y == 52 | y == 53 | y == 54 | y == 55)%>%
+
+  plot_ly()%>%
+  plotly::add_contour(
+    name=type,
+    x = ~x, 
+    y = ~y,
+    z = ~as.matrix(z),
+    frame = ~Date,
+    contours = list(
+      
+      start = start,
+      end = stop,
+      size = by,
+      showlabels = T,
+      title="Nazwa"
+#type = 'azimuthal equal area'
+      ),
+          colors=colorRamp(colory),
+    reversescale =F,
+   line = list(smoothing = 0)
+  )%>%
+  highlight("plotly_click")%>%
+ add_trace(x=polska$x,y=polska$y,type = 'scatter', mode = 'lines', 
+            line = list(color = polcolor,
+                        width = 2),  hoverinfo = 'text')%>%
+ 
+  layout(xaxis = list(title = "longitude",range=c(14,25)),
+         yaxis = list(#side = 'left',
+ range=c(49,55), title = 'latitude', showgrid = T#, zeroline = T
+))
+
+
+a
+}
+```
